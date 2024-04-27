@@ -15,6 +15,19 @@ export function ArticleCardDetail({ article }) {
           <p className="text-slate-100 font-tahoma">
             {article.article}
           </p>
+          {/* <h5>Comentarios:</h5>
+          {article.comments ? (
+            <ul>
+              {article.comments.map((comment) => (
+                <li key={comment.id}>
+                  <p>{comment.comment}</p>
+                  <p>Usuario: {comment.user.name}</p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No hay comentarios...</p>
+          )} */}
         </div>
       </div>
     </div>

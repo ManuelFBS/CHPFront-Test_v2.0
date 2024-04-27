@@ -4,7 +4,11 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { getAllArticles } from '../api/articles';
+import {
+  getAllArticles,
+  getArticleOwner,
+  getArticleUser,
+} from '../api/articles';
 
 export const ArticlesContext = createContext();
 
@@ -21,6 +25,7 @@ export const useArticles = () => {
 
 export const ArticlesProvider = ({ children }) => {
   const [articles, setArticles] = useState([]);
+  const [article, setArticle] = useState(null);
   const [errors, setErrors] = useState([]);
 
   const getArticles = async () => {
@@ -33,9 +38,24 @@ export const ArticlesProvider = ({ children }) => {
     }
   };
 
+  const getArticleOwnerByID = async (id) => {
+    try {
+      const res = await getArticleOwner(id);
+
+      setArticle(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <ArticlesContext.Provider
-      value={{ articles, errors, getArticles }}
+      value={{
+        articles,
+        errors,
+        getArticles,
+        getArticleOwnerByID,
+      }}
     >
       {children}
     </ArticlesContext.Provider>
