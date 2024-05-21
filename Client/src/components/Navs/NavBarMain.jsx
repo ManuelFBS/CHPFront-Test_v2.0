@@ -38,7 +38,7 @@ export function NavBarMain() {
               <>
                 <li>
                   <Link
-                    to="/owner/schedules"
+                    to="/owner/appointments"
                     className="bg-indigo-500 px-4 py-1 rounded-sm"
                   >
                     Citas
@@ -76,7 +76,7 @@ export function NavBarMain() {
               <>
                 <li>
                   <Link
-                    to="users/schedules"
+                    to="/users/appointment/booker"
                     className="bg-indigo-500 px-4 py-1 rounded-sm"
                   >
                     Citas

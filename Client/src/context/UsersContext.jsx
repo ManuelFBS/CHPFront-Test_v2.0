@@ -6,6 +6,7 @@ import {
 } from 'react';
 import {
   getAllUsers,
+  makeAppointment,
   verifyTokenRequest,
 } from '../api/users';
 
@@ -33,6 +34,14 @@ export const UsersProvider = ({ children }) => {
       setUsers(res.data);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const createAppointment = async () => {
+    try {
+      //
+    } catch (error) {
+      //
     }
   };
 

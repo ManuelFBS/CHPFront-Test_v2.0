@@ -4,6 +4,7 @@ import React, {
   useState,
 } from 'react';
 import {
+  createNewCommArtRequest,
   getAllArticles,
   getArticleByID,
 } from '../api/articles';
@@ -24,6 +25,7 @@ export const useArticles = () => {
 export const ArticlesProvider = ({ children }) => {
   const [articles, setArticles] = useState([]);
   const [article, setArticle] = useState(null);
+  const [comment, setComment] = useState(null);
   const [errors, setErrors] = useState(null);
 
   const fetchArticles = async () => {
@@ -46,12 +48,33 @@ export const ArticlesProvider = ({ children }) => {
     }
   };
 
+  const addNewComment = async (comment) => {
+    try {
+      const newComment = {
+        uID: comment.uID,
+        artID: comment.artID,
+      };
+
+      const res = await createNewCommArtRequest(
+        userComment,
+      );
+
+      console.log(res.data);
+
+      setComment(res.data);
+    } catch (error) {
+      console.log(error.response.data);
+      setErrors(error.response.data);
+    }
+  };
+
   return (
     <ArticlesContext.Provider
       value={{
         articles,
         article,
         errors,
+        addNewComment,
         fetchArticles,
         fetchArticleByID,
       }}
@@ -60,69 +83,3 @@ export const ArticlesProvider = ({ children }) => {
     </ArticlesContext.Provider>
   );
 };
-
-// import {
-//   createContext,
-//   useContext,
-//   useEffect,
-//   useReducer,
-//   useState,
-// } from 'react';
-// import {
-//   getAllArticles,
-//   getArticleOwner,
-//   getArticleUser,
-// } from '../api/articles';
-
-// export const ArticlesContext = createContext();
-
-// export const useArticles = () => {
-//   const context = useContext(ArticlesContext);
-
-//   if (!context)
-//     throw new Error(
-//       'useArticles must be used within an ArticlesProvider',
-//     );
-
-//   return context;
-// };
-
-// export const ArticlesProvider = ({ children }) => {
-//   const [articles, setArticles] = useState([]);
-//   const [article, setArticle] = useState([]);
-//   const [errors, setErrors] = useState([]);
-
-//   const getArticles = async () => {
-//     try {
-//       const res = await getAllArticles();
-
-//       setArticles(res.data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   const getArticleByID = async (id) => {
-//     try {
-//       const res = await getArticleOwner(id);
-
-//       setArticle(res.data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   return (
-//     <ArticlesContext.Provider
-//       value={{
-//         article,
-//         articles,
-//         errors,
-//         getArticles,
-//         getArticleByID,
-//       }}
-//     >
-//       {children}
-//     </ArticlesContext.Provider>
-//   );
-// };

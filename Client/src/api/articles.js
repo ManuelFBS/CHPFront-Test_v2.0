@@ -6,5 +6,5 @@ export const getAllArticles = () =>
 export const getArticleByID = (id) =>
   axios.get(`/owner/article/find/${id}`);
 
-// export const getArticleUser = (id) =>
-//   axios.get(`/users/article/find/${id}`);
+export const createNewCommArtRequest = (comment) =>
+  axios.post('/user/article/comment/new', comment);

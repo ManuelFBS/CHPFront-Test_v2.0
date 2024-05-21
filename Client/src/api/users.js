@@ -11,5 +11,8 @@ export const getAllUsers = () => axios.get('/users');
 // export const deleteUser = (user) =>
 //   axios.post('/auth/signup', user);
 
+export const makeAppointment = () =>
+  axios.post('/user/appointment/booker');
+
 export const verifyTokenRequest = () =>
   axios.get('/auth/verify');

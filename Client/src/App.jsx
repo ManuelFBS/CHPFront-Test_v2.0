@@ -13,7 +13,7 @@ import {
   LoginPage,
   ProtectedRoutes,
   RegisterPage,
-  SchedulesPage,
+  AppointmentsPage,
   UsersPage,
 } from './pages';
 import { NavBarMain } from './components/Navs/NavBarMain';
@@ -73,8 +73,8 @@ function App() {
                     element={<DashboardPage />}
                   />
                   <Route
-                    path="/owner/schedules"
-                    element={<SchedulesPage />}
+                    path="/owner/appointments"
+                    element={<AppointmentsPage />}
                   />
                   <Route
                     path="/owner/users"
@@ -87,6 +87,10 @@ function App() {
                   <Route
                     path="/users/articles"
                     element={<ArticlesPage />}
+                  />
+                  <Route
+                    path="/users/appointment/booker"
+                    element={<AppointmentsPage />}
                   />
                 </Route>
                 // ========================================

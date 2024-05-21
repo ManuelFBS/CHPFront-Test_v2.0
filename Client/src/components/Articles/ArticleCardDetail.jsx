@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../UI';
 
 export function ArticleCardDetail({ article }) {
   return (
@@ -34,6 +35,20 @@ export function ArticleCardDetail({ article }) {
                 </div>
               </li>
             ))}
+            <li className="flex justify-between mt-5">
+              <div className="w-full bg-transparent mr-2">
+                <textarea
+                  rows="3"
+                  placeholder=" Escriba su comentario..."
+                  className="w-full bg-gray-200 text-slate-700 rounded-md"
+                ></textarea>
+              </div>
+              <div className="bg-transparent">
+                <Button type="submit" className="mt-4">
+                  Enviar
+                </Button>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
